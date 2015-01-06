@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace ShdrEdtr.Engine.Controls
 {
-    public class RndrForm : System.Windows.Forms.UserControl
+    public class RndrForm : UserControl
     {
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            SuspendLayout();
             // 
             // RndrForm
             // 
-            this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.Name = "RndrForm";
-            this.ResumeLayout(false);
+            BackColor = SystemColors.Desktop;
+            Name = "RndrForm";
+            ResumeLayout(false);
 
         }
     }

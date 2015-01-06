@@ -1,19 +1,13 @@
-﻿using System;
-
-using System.ComponentModel;//needed to overide OnClosing
-//I removed useless usings
+﻿using System.ComponentModel;
 using System.Windows.Forms;
-
+using SharpDX.Direct3D;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
-using SharpDX;
+using SharpDX.Mathematics.Interop;
+using Device = SharpDX.Direct3D11.Device;
 
 namespace ShdrEdtr.WinForms
 {
-
-    using Device = SharpDX.Direct3D11.Device;
-    using Buffer = SharpDX.Direct3D11.Buffer;
-
     public partial class Form1 : Form
     {
         Device d;
@@ -45,7 +39,7 @@ namespace ShdrEdtr.WinForms
             };
 
             Device.CreateWithSwapChain(
-                SharpDX.Direct3D.DriverType.Hardware,//hardware if you have a graphics card otherwise you can use software
+                DriverType.Hardware,//hardware if you have a graphics card otherwise you can use software
                 DeviceCreationFlags.Debug,           //helps debuging don't use this for release verion
                 scd,                                 //the swapchain description made above
                 out d, out sc                        //our directx objects
@@ -73,7 +67,7 @@ namespace ShdrEdtr.WinForms
         {
             //I am rendering here for this example
             //normally I use a seperate thread to call Draw() and Present() in a loop
-            d.ImmediateContext.ClearRenderTargetView(targetveiw, new SharpDX.Mathematics.Interop.RawColor4(1,0,0,0));//Color to make it look like default XNA project output.
+            d.ImmediateContext.ClearRenderTargetView(targetveiw, new RawColor4(1,0,0,0));//Color to make it look like default XNA project output.
             sc.Present(0, PresentFlags.None);
 
             base.OnPaint(e);
